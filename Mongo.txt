@@ -583,3 +583,54 @@ Type "it" for more
 QUE 5: an api to get details of the company.
 
 
+> db.Search.find({details:"This is my job details"}).pretty()
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e998"),
+        "skills" : "Health Coach IV",
+        "city" : "Tīrān",
+        "noticePeriod" : 4,
+        "rating" : 36,
+        "details" : "This is my job details",
+        "mostJobs" : 100,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9d2"),
+        "skills" : "Senior Financial Analyst",
+        "city" : "Krajan",
+        "noticePeriod" : 7,
+        "rating" : 29,
+        "details" : "This is my job details",
+        "mostJobs" : 100,
+        "available" : "Work from home"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea96"),
+        "skills" : "Administrative Officer",
+        "city" : "Wenshang",
+        "noticePeriod" : 8,
+        "rating" : 73,
+        "details" : "This is my job details",
+        "mostJobs" : 100,
+        "available" : "Electrician"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea9b"),
+        "skills" : "Software Consultant",
+        "city" : "Degan",
+        "noticePeriod" : 2,
+        "rating" : 19,
+        "details" : "This is my job details",
+        "mostJobs" : 100,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb0b"),
+        "skills" : "Software Engineer III",
+        "city" : "Marcq-en-Barœul",
+        "noticePeriod" : 3,
+        "rating" : 81,
+        "details" : "This is my job details",
+        "mostJobs" : 100,
+        "available" : "Construction Worker"
+}
