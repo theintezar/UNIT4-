@@ -1,0 +1,585 @@
+C:\Users\prithvi>mongoimport "C:\Users\prithvi\Downloads\MOCK_DATA (1).json" -d jobs -c Search --jsonArray
+2021-11-29T14:34:41.050+0530    connected to: mongodb://localhost/
+2021-11-29T14:34:41.252+0530    500 document(s) imported successfully. 0 document(s) failed to import.
+
+
+
+QUE 1. get all jobs in a particular city which matches a particular skill.
+
+> db.Search.find({$and:[{city:{$eq: "Mumbai"}},{skills:{$eq: "Developers"}}]}).pretty()
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e987"),
+        "skills" : "Developers",
+        "city" : "Mumbai",
+        "noticePeriod" : 5,
+        "rating" : 59,
+        "details" : "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",
+        "mostJobs" : 66,
+        "available" : "Engineer"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea85"),
+        "skills" : "Developers",
+        "city" : "Mumbai",
+        "noticePeriod" : 9,
+        "rating" : 59,
+        "details" : "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        "mostJobs" : 28,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eae6"),
+        "skills" : "Developers",
+        "city" : "Mumbai",
+        "noticePeriod" : 4,
+        "rating" : 59,
+        "details" : "Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+        "mostJobs" : 79,
+        "available" : "Construction Worker"
+}
+
+
+
+QUE 2 . find all the jobs that are available as Work from home.
+
+
+> db.Search.find({available:{$eq: "Work from home"}}).pretty()
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9d2"),
+        "skills" : "Senior Financial Analyst",
+        "city" : "Krajan",
+        "noticePeriod" : 7,
+        "rating" : 29,
+        "details" : "Nulla tellus.",
+        "mostJobs" : 100,
+        "available" : "Work from home"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9f8"),
+        "skills" : "Quality Engineer",
+        "city" : "Yên Thành",
+        "noticePeriod" : 9,
+        "rating" : 29,
+        "details" : "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.",
+        "mostJobs" : 93,
+        "available" : "Work from home"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea51"),
+        "skills" : "Technical Writer",
+        "city" : "Palmira",
+        "noticePeriod" : 4,
+        "rating" : 29,
+        "details" : "Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
+        "mostJobs" : 8,
+        "available" : "Work from home"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb49"),
+        "skills" : "Research Associate",
+        "city" : "Marsh Harbour",
+        "noticePeriod" : 4,
+        "rating" : 29,
+        "details" : "Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+        "mostJobs" : 12,
+        "available" : "Work from home"
+}
+
+
+QUE 3.  find all the jobs that will accept a notice period of 2 months.
+
+> db.Search.find({noticePeriod:{$eq: 2}}).pretty()
+
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e976"),
+        "skills" : "Help Desk Technician",
+        "city" : "Taishang",
+        "noticePeriod" : 2,
+        "rating" : 77,
+        "details" : "Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+        "mostJobs" : 68,
+        "available" : "Architect"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e97d"),
+        "skills" : "Nurse",
+        "city" : "Vredendal",
+        "noticePeriod" : 2,
+        "rating" : 22,
+        "details" : "Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.",
+        "mostJobs" : 79,
+        "available" : "Supervisor"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e986"),
+        "skills" : "General Manager",
+        "city" : "Shuizhai",
+        "noticePeriod" : 2,
+        "rating" : 11,
+        "details" : "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.",
+        "mostJobs" : 70,
+        "available" : "Estimator"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e988"),
+        "skills" : "Assistant Professor",
+        "city" : "Marte",
+        "noticePeriod" : 2,
+        "rating" : 78,
+        "details" : "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+        "mostJobs" : 5,
+        "available" : "Electrician"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e99d"),
+        "skills" : "VP Accounting",
+        "city" : "Luchingu",
+        "noticePeriod" : 2,
+        "rating" : 2,
+        "details" : "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+        "mostJobs" : 73,
+        "available" : "Electrician"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e99f"),
+        "skills" : "Project Manager",
+        "city" : "Saint-Constant",
+        "noticePeriod" : 2,
+        "rating" : 54,
+        "details" : "Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.",
+        "mostJobs" : 43,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9bc"),
+        "skills" : "Environmental Tech",
+        "city" : "Hengpi",
+        "noticePeriod" : 2,
+        "rating" : 78,
+        "details" : "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+        "mostJobs" : 87,
+        "available" : "Construction Foreman"
+}
+
+
+QUE 4.  find all jobs by sorting the jobs as per their rating.
+
+ db.Search.find().sort({rating:1}).pretty()
+
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e97c"),
+        "skills" : "Engineer I",
+        "city" : "Qionghai",
+        "noticePeriod" : 6,
+        "rating" : 1,
+        "details" : "Proin risus.",
+        "mostJobs" : 57,
+        "available" : "Construction Worker"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9d9"),
+        "skills" : "Paralegal",
+        "city" : "Ladner",
+        "noticePeriod" : 3,
+        "rating" : 1,
+        "details" : "Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
+        "mostJobs" : 81,
+        "available" : "Construction Manager"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea26"),
+        "skills" : "Nuclear Power Engineer",
+        "city" : "Kamogatachō-kamogata",
+        "noticePeriod" : 9,
+        "rating" : 1,
+        "details" : "In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+        "mostJobs" : 51,
+        "available" : "Construction Manager"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb31"),
+        "skills" : "Engineer II",
+        "city" : "Kailahun",
+        "noticePeriod" : 3,
+        "rating" : 1,
+        "details" : "Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
+        "mostJobs" : 14,
+        "available" : "Subcontractor"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb55"),
+        "skills" : "Assistant Professor",
+        "city" : "Mumbai",
+        "noticePeriod" : 4,
+        "rating" : 1,
+        "details" : "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo.",
+        "mostJobs" : 59,
+        "available" : "Construction Worker"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb5f"),
+        "skills" : "Occupational Therapist",
+        "city" : "General Alvear",
+        "noticePeriod" : 6,
+        "rating" : 1,
+        "details" : "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.",
+        "mostJobs" : 97,
+        "available" : "Engineer"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e99d"),
+        "skills" : "VP Accounting",
+        "city" : "Luchingu",
+        "noticePeriod" : 2,
+        "rating" : 2,
+        "details" : "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+        "mostJobs" : 73,
+        "available" : "Electrician"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea1f"),
+        "skills" : "Media Manager II",
+        "city" : "Karoya",
+        "noticePeriod" : 9,
+        "rating" : 2,
+        "details" : "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.",
+        "mostJobs" : 8,
+        "available" : "Estimator"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea7a"),
+        "skills" : "Budget/Accounting Analyst II",
+        "city" : "Jiegan",
+        "noticePeriod" : 9,
+        "rating" : 2,
+        "details" : "Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla.",
+        "mostJobs" : 13,
+        "available" : "Subcontractor"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eaa7"),
+        "skills" : "Senior Editor",
+        "city" : "Catac",
+        "noticePeriod" : 8,
+        "rating" : 2,
+        "details" : "In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+        "mostJobs" : 56,
+        "available" : "Construction Manager"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eaac"),
+        "skills" : "Developer III",
+        "city" : "Krajan Atas Suger Lor",
+        "noticePeriod" : 6,
+        "rating" : 2,
+        "details" : "Nulla facilisi.",
+        "mostJobs" : 22,
+        "available" : "Architect"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eaf6"),
+        "skills" : "Physical Therapy Assistant",
+        "city" : "Mariatana",
+        "noticePeriod" : 9,
+        "rating" : 2,
+        "details" : "Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.",
+        "mostJobs" : 68,
+        "available" : "Construction Worker"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb27"),
+        "skills" : "Administrative Officer",
+        "city" : "Tambir",
+        "noticePeriod" : 3,
+        "rating" : 2,
+        "details" : "Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc.",
+        "mostJobs" : 20,
+        "available" : "Engineer"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9be"),
+        "skills" : "Developer II",
+        "city" : "Viña del Mar",
+        "noticePeriod" : 3,
+        "rating" : 3,
+        "details" : "Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",
+        "mostJobs" : 37,
+        "available" : "Architect"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea32"),
+        "skills" : "Programmer Analyst I",
+        "city" : "Chełm",
+        "noticePeriod" : 3,
+        "rating" : 3,
+        "details" : "Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus.",
+        "mostJobs" : 1,
+        "available" : "Construction Manager"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea81"),
+        "skills" : "Social Worker",
+        "city" : "Bagay",
+        "noticePeriod" : 8,
+        "rating" : 3,
+        "details" : "Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+        "mostJobs" : 77,
+        "available" : "Electrician"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eac2"),
+        "skills" : "Staff Scientist",
+        "city" : "Lingsar",
+        "noticePeriod" : 1,
+        "rating" : 3,
+        "details" : "Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+        "mostJobs" : 12,
+        "available" : "Supervisor"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb52"),
+        "skills" : "Analyst Programmer",
+        "city" : "Quiling",
+        "noticePeriod" : 8,
+        "rating" : 3,
+        "details" : "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.",
+        "mostJobs" : 3,
+        "available" : "Construction Worker"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9d0"),
+        "skills" : "Safety Technician I",
+        "city" : "Balayang",
+        "noticePeriod" : 4,
+        "rating" : 4,
+        "details" : "Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+        "mostJobs" : 75,
+        "available" : "Construction Expeditor"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9dd"),
+        "skills" : "Administrative Assistant IV",
+        "city" : "Sanshilipu",
+        "noticePeriod" : 5,
+        "rating" : 4,
+        "details" : "Praesent id massa id nisl venenatis lacinia.",
+        "mostJobs" : 17,
+        "available" : "Supervisor"
+}
+
+
+
+
+
+
+QUE 6.  find the company that has the most open jobs.
+
+
+> db.Search.find().sort({mostJobs:-1}).pretty()
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e998"),
+        "skills" : "Health Coach IV",
+        "city" : "Tīrān",
+        "noticePeriod" : 4,
+        "rating" : 36,
+        "details" : "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+        "mostJobs" : 100,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9d2"),
+        "skills" : "Senior Financial Analyst",
+        "city" : "Krajan",
+        "noticePeriod" : 7,
+        "rating" : 29,
+        "details" : "Nulla tellus.",
+        "mostJobs" : 100,
+        "available" : "Work from home"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea96"),
+        "skills" : "Administrative Officer",
+        "city" : "Wenshang",
+        "noticePeriod" : 8,
+        "rating" : 73,
+        "details" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.",
+        "mostJobs" : 100,
+        "available" : "Electrician"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea9b"),
+        "skills" : "Software Consultant",
+        "city" : "Degan",
+        "noticePeriod" : 2,
+        "rating" : 19,
+        "details" : "Nulla nisl. Nunc nisl.",
+        "mostJobs" : 100,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb0b"),
+        "skills" : "Software Engineer III",
+        "city" : "Marcq-en-Barœul",
+        "noticePeriod" : 3,
+        "rating" : 81,
+        "details" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+        "mostJobs" : 100,
+        "available" : "Construction Worker"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e984"),
+        "skills" : "Media Manager II",
+        "city" : "Franco da Rocha",
+        "noticePeriod" : 10,
+        "rating" : 41,
+        "details" : "Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",
+        "mostJobs" : 99,
+        "available" : "Estimator"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e985"),
+        "skills" : "Senior Developer",
+        "city" : "España",
+        "noticePeriod" : 9,
+        "rating" : 17,
+        "details" : "Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
+        "mostJobs" : 99,
+        "available" : "Estimator"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9fe"),
+        "skills" : "Junior Executive",
+        "city" : "Mushu",
+        "noticePeriod" : 2,
+        "rating" : 79,
+        "details" : "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat.",
+        "mostJobs" : 99,
+        "available" : "Estimator"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea07"),
+        "skills" : "VP Sales",
+        "city" : "Sasovo",
+        "noticePeriod" : 1,
+        "rating" : 54,
+        "details" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.",
+        "mostJobs" : 99,
+        "available" : "Estimator"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea25"),
+        "skills" : "Media Manager I",
+        "city" : "Saumur",
+        "noticePeriod" : 9,
+        "rating" : 75,
+        "details" : "Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+        "mostJobs" : 98,
+        "available" : "Construction Expeditor"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea31"),
+        "skills" : "Web Developer II",
+        "city" : "Cheban",
+        "noticePeriod" : 1,
+        "rating" : 65,
+        "details" : "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla.",
+        "mostJobs" : 98,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea55"),
+        "skills" : "Administrative Officer",
+        "city" : "Kazinka",
+        "noticePeriod" : 9,
+        "rating" : 92,
+        "details" : "Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum.",
+        "mostJobs" : 98,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eac9"),
+        "skills" : "Director of Sales",
+        "city" : "Tiko",
+        "noticePeriod" : 8,
+        "rating" : 96,
+        "details" : "Vivamus tortor. Duis mattis egestas metus.",
+        "mostJobs" : 98,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982eb0e"),
+        "skills" : "Account Executive",
+        "city" : "Barnaul",
+        "noticePeriod" : 9,
+        "rating" : 58,
+        "details" : "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus.",
+        "mostJobs" : 98,
+        "available" : "Project Manager"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9c9"),
+        "skills" : "Web Designer II",
+        "city" : "Nashville",
+        "noticePeriod" : 3,
+        "rating" : 10,
+        "details" : "Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+        "mostJobs" : 97,
+        "available" : "Architect"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982e9d8"),
+        "skills" : "Data Coordiator",
+        "city" : "Zamostochcha",
+        "noticePeriod" : 1,
+        "rating" : 86,
+        "details" : "Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+        "mostJobs" : 97,
+        "available" : "Construction Foreman"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea0b"),
+        "skills" : "Dental Hygienist",
+        "city" : "Nicola Town",
+        "noticePeriod" : 1,
+        "rating" : 82,
+        "details" : "Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis.",
+        "mostJobs" : 97,
+        "available" : "Estimator"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea1d"),
+        "skills" : "Financial Analyst",
+        "city" : "Cabanaconde",
+        "noticePeriod" : 10,
+        "rating" : 84,
+        "details" : "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        "mostJobs" : 97,
+        "available" : "Supervisor"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea29"),
+        "skills" : "Engineer II",
+        "city" : "Bāgh-e Malek",
+        "noticePeriod" : 4,
+        "rating" : 55,
+        "details" : "Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.",
+        "mostJobs" : 97,
+        "available" : "Engineer"
+}
+{
+        "_id" : ObjectId("61a497a9f55d6ec1d982ea3c"),
+        "skills" : "Social Worker",
+        "city" : "Dikou",
+        "noticePeriod" : 4,
+        "rating" : 40,
+        "details" : "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+        "mostJobs" : 97,
+        "available" : "Architect"
+}
+Type "it" for more
+
+
+
+QUE 5: an api to get details of the company.
+
+
