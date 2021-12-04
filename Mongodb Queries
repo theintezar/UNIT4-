@@ -1,0 +1,256 @@
+> show dbs
+admin       0.000GB
+assignment  0.000GB
+config      0.000GB
+local       0.000GB
+
+> use assignment
+switched to db assignment
+
+> db.users.insert({firstname:"intezar",lastName:"khan",email:"int@123",gender:"male",ipAddres:123,age:21})
+WriteResult({ "nInserted" : 1 })
+>
+
+> db.users.insertMany([{f_name:"yogesh",l_name:"bhatt"},{f_name:"Aman",l_name:"vats"},{f_name:"ashu",l_name:"Mishra"},{f_name:"Nrupul",l_name:"dev"},{f_name:"arman",l_name:"khan"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("619fb2c20fa3175444540347"),
+                ObjectId("619fb2c20fa3175444540348"),
+                ObjectId("619fb2c20fa3175444540349"),
+                ObjectId("619fb2c20fa317544454034a"),
+                ObjectId("619fb2c20fa317544454034b")
+        ]
+}
+>
+
+
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("619fae390fa317544454033f"),
+        "firstname" : "intezar",
+        "lastName" : "khan",
+        "email" : "int@123",
+        "gender" : "male",
+        "ipAddres" : 123,
+        "age" : 21
+}
+
+
+{
+        "_id" : ObjectId("619fb1e70fa3175444540341"),
+        "f_name" : "yogesh",
+        "l_name" : "bhatt"
+}
+{
+        "_id" : ObjectId("619fb1e70fa3175444540342"),
+        "f_name" : "Aman",
+        "l_name" : "vats"
+}
+{
+        "_id" : ObjectId("619fb1e70fa3175444540343"),
+        "f_name" : "ashu",
+        "l_name" : "Mishra"
+}
+{
+        "_id" : ObjectId("619fb1e70fa3175444540344"),
+        "f_name" : "Nrupul",
+        "l_name" : "dev"
+}
+{
+        "_id" : ObjectId("619fb1e70fa3175444540345"),
+        "f_name" : "arman",
+        "l_name" : "khan"
+}
+
+
+> db.users.findOne()
+{
+        "_id" : ObjectId("619fae390fa317544454033f"),
+        "firstname" : "intezar",
+        "lastName" : "khan",
+        "email" : "int@123",
+        "gender" : "male",
+        "ipAddres" : 123,
+        "age" : 21
+}
+>
+
+
+> db.users.update({email:"int@123"},{lastName:"Ahmad"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.users.findOne()
+{ "_id" : ObjectId("619fae390fa317544454033f"), "lastName" : "Ahmad" }
+
+
+
+
+> db.users.find({gender:"female"}).pretty()
+{
+        "_id" : ObjectId("619fba5f0fa317544454034c"),
+        "firstname" : "priti",
+        "lastName" : "sikka",
+        "email" : "pr@123",
+        "gender" : "female",
+        "ipAddres" : 2,
+        "age" : 20
+}
+{
+        "_id" : ObjectId("619fbaa40fa317544454034d"),
+        "firstname" : "suman",
+        "lastName" : "tiwari",
+        "email" : "su@123",
+        "gender" : "female",
+        "ipAddres" : 3,
+        "age" : 22
+}
+{
+        "_id" : ObjectId("619fbad20fa317544454034e"),
+        "firstname" : "taniya",
+        "lastName" : "khan",
+        "email" : "ta@123",
+        "gender" : "female",
+        "ipAddres" : 4,
+        "age" : 22
+}
+{
+        "_id" : ObjectId("619fbb090fa317544454034f"),
+        "firstname" : "kusum",
+        "lastName" : "khan",
+        "email" : "ku@123",
+        "gender" : "female",
+        "ipAddres" : 5,
+        "age" : 16
+}
+
+
+> db.users.update({email:"pr@123"},{$set:{lastName:"singh"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+> db.users.find({email:"pr@123"}).pretty()
+{
+        "_id" : ObjectId("619fba5f0fa317544454034c"),
+        "firstname" : "priti",
+        "lastName" : "singh",
+        "email" : "pr@123",
+        "gender" : "female",
+        "ipAddres" : 2,
+        "age" : 20
+}
+
+
+
+> db.users.updateMany({gender:"female"},{$set:{gender:"fem,lady"}})
+{ "acknowledged" : true, "matchedCount" : 4, "modifiedCount" : 4 }
+> db.users.find({gender:"fem,lady"}).pretty()
+{
+        "_id" : ObjectId("619fba5f0fa317544454034c"),
+        "firstname" : "priti",
+        "lastName" : "singh",
+        "email" : "pr@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 2,
+        "age" : 20
+}
+{
+        "_id" : ObjectId("619fbaa40fa317544454034d"),
+        "firstname" : "suman",
+        "lastName" : "tiwari",
+        "email" : "su@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 3,
+        "age" : 22
+}
+{
+        "_id" : ObjectId("619fbad20fa317544454034e"),
+        "firstname" : "taniya",
+        "lastName" : "khan",
+        "email" : "ta@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 4,
+        "age" : 22
+}
+{
+        "_id" : ObjectId("619fbb090fa317544454034f"),
+        "firstname" : "kusum",
+        "lastName" : "khan",
+        "email" : "ku@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 5,
+        "age" : 16
+}
+>
+
+
+> db.users.remove({email:"ku@123"})
+WriteResult({ "nRemoved" : 1 })
+
+> db.users.find({gender:"fem,lady"}).pretty()
+{
+        "_id" : ObjectId("619fba5f0fa317544454034c"),
+        "firstname" : "priti",
+        "lastName" : "singh",
+        "email" : "pr@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 2,
+        "age" : 20
+}
+{
+        "_id" : ObjectId("619fbaa40fa317544454034d"),
+        "firstname" : "suman",
+        "lastName" : "tiwari",
+        "email" : "su@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 3,
+        "age" : 22
+}
+{
+        "_id" : ObjectId("619fbad20fa317544454034e"),
+        "firstname" : "taniya",
+        "lastName" : "khan",
+        "email" : "ta@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 4,
+        "age" : 22
+}
+>
+
+> db.users.deleteOne({email:"pr@123"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+> db.users.find({gender:"fem,lady"}).pretty()
+{
+        "_id" : ObjectId("619fbaa40fa317544454034d"),
+        "firstname" : "suman",
+        "lastName" : "tiwari",
+        "email" : "su@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 3,
+        "age" : 22
+}
+{
+        "_id" : ObjectId("619fbad20fa317544454034e"),
+        "firstname" : "taniya",
+        "lastName" : "khan",
+        "email" : "ta@123",
+        "gender" : "fem,lady",
+        "ipAddres" : 4,
+        "age" : 22
+}
+>
+
+> db.users.deleteMany({gender:"fem,lady"})
+{ "acknowledged" : true, "deletedCount" : 2 }
+> db.users.find({gender:"fem,lady"}).pretty()
+>
+
+
+> db.users.drop()
+true
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+>
+
+'''''''''''''''''''''''''
