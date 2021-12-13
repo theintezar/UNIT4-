@@ -23,13 +23,48 @@ poster_url: {type: String, required: true}
 
 });
 
+const  theatresSchema = new mongoose.Schema({
+    name: {type: String, required: true},
+    location: {type: String, required: true}
+});
+
+const screenSchema = new mongoose.Schema({
+    name: {type: String, required: true},
+    threatre: {type: String, required: true}
+
+});
+
+const showSchema = new mongoose.Schema({
+    timing: {type: Number, required: true},
+    movie: {type: String, required: true},
+    total_seats: {type: String, required: true},
+    screen: {type: String, required: true}
+    
+    
+    });
+
+    const seatSchema = new mongoose.Schema({
+        screen: {type: String, required: true},
+        
+    
+    });
+
 const User = mongoose.model("user", userSchema);
 
 const User1 = mongoose.model("user1", movieSchema1);
 
+const User2 = mongoose.model("user2", theatresSchema);
+
+const User3 = mongoose.model("user3", screenSchema);
+
+const User4 = mongoose.model("user4", showSchema);
+
+const User5 = mongoose.model("user5", seatSchema)
+
 const app = express();
 
 app.use(express.json());
+
 
 app.post("/users", async (req, res)=>{
     const user = await User.create(req.body);
@@ -43,9 +78,33 @@ app.post("/users1", async (req, res)=>{
 
 });
 
+app.post("/users2", async (req, res)=>{
+    const user = await User2.create(req.body);
+    res.status(201).send(user);
+
+});
+
+app.post("/users3", async (req, res)=>{
+    const user = await User3.create(req.body);
+    res.status(201).send(user);
+
+});
+
+app.post("/users4", async (req, res)=>{
+    const user = await User4.create(req.body);
+    res.status(201).send(user);
+
+});
+
+app.post("/users5", async (req, res)=>{
+    const user = await User5.create(req.body);
+    res.status(201).send(user);
+
+});
+
 
 
 app.listen(5000, async function(){
     await connect();
     console.log("listen on port 5000");
-})
+});
